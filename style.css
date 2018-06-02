@@ -35,6 +35,6 @@ h1 {
 }
 
 div {
-    z-index: 2;
+    z-index: 10;
     position: absolute;
 }
