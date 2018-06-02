@@ -1,4 +1,6 @@
 .container {
+    z-index: 1;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
     max-width: 500px;
@@ -30,4 +32,9 @@
 
 h1 {
   text-align: center;
+}
+
+div {
+    z-index: 2;
+    position: relative;
 }
