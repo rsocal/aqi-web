@@ -33,7 +33,6 @@ h1 {
   text-align: center;
 }
 
-div {
-    z-index: 10;
+.charty {
     clear: both;
 }
