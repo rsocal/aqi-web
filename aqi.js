@@ -7,35 +7,57 @@ function getData() {
   }).catch(err => {
     console.log(err);
   })
+	var dataPoints = [];
+	
 	var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	theme: "light2",
 	title:{
-		text: "Simple Line Chart"
+		text: "Quality over Time"
 	},
 	axisY:{
-		includeZero: false
+		title:"µg/m³",
+		titleFontSize: 24
 	},
 	data: [{        
 		type: "line",       
-		dataPoints: [
-			{ y: 450 },
-			{ y: 414},
-			{ y: 520, indexLabel: "highest",markerColor: "red", markerType: "triangle" },
-			{ y: 460 },
-			{ y: 450 },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 480 },
-			{ y: 410 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 510 }
-		]
+		yValueFormatString: "#,### µg/m³",
+		dataPoints: dataPoints
+	}]
+   });
+	function addData(data) {
+	for (var i = 0; i < data.length; i++) {
+		dataPoints.push({
+			x: new Date(data[i].date),
+			y: data[i].units
+		});
+	}
+	chart.render();
+
+}
+
+$.getJSON("aqi.json", addData);
+
+}
+
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title: {
+		text: "Daily Sales Data"
+	},
+	axisY: {
+		title: "Units",
+		titleFontSize: 24
+	},
+	data: [{
+		type: "column",
+		yValueFormatString: "#,### µg/m³",
+		dataPoints: dataPoints
 	}]
 });
-chart.render();
-}
+
 
 function updateHtml(data) {
   let aqiPm25 = calcAQIpm25(data.pm25);
