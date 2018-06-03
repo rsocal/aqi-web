@@ -25,21 +25,21 @@ function getData() {
 		dataPoints: dataPoints
 	}]
    });
-	function addData(data) {
+
+}
+
+$.getJSON("aqi.json", addData);
+chart.render();
+
+}
+
+function addData(data) {
 	for (var i = 0; i < data.length; i++) {
 		dataPoints.push({
 			x: new Date(data[i].date),
 			y: data[i].units
 		});
 	}
-	chart.render();
-
-}
-
-$.getJSON("aqi.json", addData);
-
-}
-
 
 
 function updateHtml(data) {
