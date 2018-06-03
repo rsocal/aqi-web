@@ -41,23 +41,6 @@ $.getJSON("aqi.json", addData);
 }
 
 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title: {
-		text: "Daily Sales Data"
-	},
-	axisY: {
-		title: "Units",
-		titleFontSize: 24
-	},
-	data: [{
-		type: "column",
-		yValueFormatString: "#,### µg/m³",
-		dataPoints: dataPoints
-	}]
-});
-
 
 function updateHtml(data) {
   let aqiPm25 = calcAQIpm25(data.pm25);
